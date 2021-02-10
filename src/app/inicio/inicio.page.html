@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Inicio</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item> 
+    <ion-button shape="round" [disabled]="loggedIn == false" fill="outline" expand="full" (click) ="logOut()">logout</ion-button>
+  </ion-item>
+  <ion-item *ngFor="let producto of prods | async">
+    <ion-avatar slot="start">
+      <ion-img [src]="producto.photoURL"></ion-img>
+    </ion-avatar>
+    <ion-label>
+      <h2>{{producto.nombre}}</h2>
+      <h3>{{producto.precio}}</h3>
+      <p>{{producto.descripcion}}</p>
+    </ion-label>
+    <ion-item> 
+      <ion-button shape="round" [disabled]="loggedIn == false" fill="outline" expand="full" (click) ="verProducto(producto.uid)">Ver</ion-button>
+    </ion-item>
+
+  </ion-item>
+</ion-content>
